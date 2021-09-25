@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FoodOrderingSystem.Models.BookedFood>
+@{
+    ViewBag.Title = "oderdisplay";
+    Layout = "~/Views/Shared/Adminlayout.cshtml";
+}
+
+<style>
+    .menu-header {
+        background-color: gainsboro;
+    }
+
+    .bill {
+        display: block;
+        font-size: 20px;
+        text-align: center;
+    }
+</style>
+<div class="menu-header">
+    <label class="bill"><h2>WOWFOOD BILL</h2></label>
+    <label class="bill">Shifal,kathmandu</label>
+    <label class="bill">9861293394,01-4483498</label>
+</div>
+<div class="menu-header" style="margin-top:20px; padding:20px;">
+
+    <label class="bill" style="margin-left:-40%;">Food list:</label>
+
+    @{
+        foreach (var item in Model)
+        {
+            <br />
+            string user = Session["username"].ToString();
+            if (item.Username == user)
+            {
+                <div class="menu-show" style="display:flex;">
+                    <div class="food-list" style="width:60%; box-shadow:2px 3px white;">
+                        <label class="bill">@Html.DisplayFor(modelItem => item.Foodlist)</label>
+                    </div>
+                    <div class="total" style="width:40%;box-shadow:2px 3px white;">
+                        <label class="bill">Rs.@Html.DisplayFor(modelItem => item.Foodprice)</label>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>
+
+
+
+

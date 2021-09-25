@@ -1,0 +1,147 @@
+﻿@model FoodOrderingSystem.Models.Userlogin
+@{
+    ViewBag.Title = "Adminprofile";
+    Layout = "~/Views/Shared/Adminlayout.cshtml";
+}
+
+
+<html>
+<head>
+    <title></title>
+    <style>
+        .profilepage {
+            padding: 30% 33%;
+            float: right;
+            background-color: gainsboro;
+        }
+
+        .upload {
+            background-color: #333f4d;
+            border: none;
+            color: white;
+            padding: 12px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            float: left;
+            margin-top: 20%;
+            margin-left: -16%;
+        }
+
+        .profile {
+            box-shadow: 5px 3px gray;
+            margin-left: 20%;
+            border-radius: 10px;
+        }
+
+        .righttextbox {
+            margin-left: 50%;
+            margin-top: -50px;
+        }
+
+        .lefttextbox {
+            margin-right: 50%;
+            margin-top: 20px;
+        }
+
+        #samebutton {
+            border: 2px solid;
+            color: #333f4d;
+            background-color: #333f4d;
+            padding: 12px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            margin-top: 50px;
+            margin-left: 40%;
+            background-color: #d3d3d3;
+            border-radius: 10px 20px;
+        }
+
+            #samebutton:hover {
+                background-color: white;
+            }
+
+        .text-box {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div style="float:left">
+            <img src="~/Content/LoginFile/images/avatars/useravatar.png" alt="image" class="img-thumbnail" width="150" height="150" />
+        </div>
+    </div>
+    <div style="display:flex; margin-left:30%;">
+        <div style=" width:30%;">
+            <a href="@Url.Action("oderdisplay","Foodmenu")"><span><img src="~/Content/images/clipboard.png" /></span></a>
+        </div>
+        <div style=" width:10%;">
+            <a href="@Url.Action("Addnew","Adminpage")"><span><img src="~/Content/images/addnew.png" /></span></a>
+        </div>
+            <div style=" width:30%; text-align:right;">
+                <a href="@Url.Action("Index","Home")"><span><img src="~/Content/images/logout.png" /></span></a>
+            </div>
+        
+      </div>
+    <div class="profile" style="margin-top:30px;">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div>
+                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "text-box" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.Phoneno, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Phoneno, new { htmlAttributes = new { @class = "text-box" } })
+                        @Html.ValidationMessageFor(model => model.Phoneno, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "text-box" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div>
+                    <input type="submit" value="Save" class="btn btn-primary" style="padding:10px; margin-left:40%;margin-bottom:3%;background-color:#333f4d;border-color:#333f4d;" />
+                </div>
+            </div>
+        }
+
+    </div>
+
+</body>
+</html>
+
+
+
+
+

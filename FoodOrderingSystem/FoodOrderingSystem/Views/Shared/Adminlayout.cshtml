@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOWFOOD</title>
+    <!-- Link our CSS file -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/fontawesome-free-5.15.2-web/css/all.css" />
+</head>
+<body>
+
+    <!-- Navbar Section Starts Here -->
+    <section class="navbar">
+        <div class="container">
+            <div>
+                <div class="flex-box">
+                    <div class="logo">
+                        <a href="@Url.Action("Index","Adminpage")" title="Logo">
+                            <img src="~/Content/images/logo.png" alt="Restaurant Logo" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="menu text-center" style=" width:60%">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index","Adminpage")">Home</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Categories","Adminpage")">Categories</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Foods","Adminpage")">Foods</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("addtocart","Adminpage")">View Cart<span class="fas fa-shopping-cart"></span></a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="profile-page" style="width:5%;">
+                        <div class="profile-pic" style="width:90%;">
+                            <a href="@Url.Action("Adminprofile","Adminpage")"><img src="~/Content/LoginFile/images/avatars/avatar.jpg" class="profile-responsive" /></a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    
+                </div>
+            </div>
+
+
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <!-- Navbar Section Ends Here -->
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+
+</body>
+</html>

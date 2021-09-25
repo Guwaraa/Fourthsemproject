@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WOWFOOD</title>
+    <!-- Link our CSS file -->
+    <link rel="stylesheet" href="~/Content/css/stylecss.css">
+    <link  rel="stylesheet" href="~/Content/fontawesome-free-5.15.2-web/css/all.css"/>
+</head>
+<body>
+
+    <!-- Navbar Section Starts Here -->
+    <section class="navbar">
+        <div class="container">
+            <div>
+                <div class="flex-box">
+                    <div class="logo">
+                        <a href="@Url.Action("Index","Home")" title="Logo">
+                            <img src="~/Content/images/logo.png" alt="Restaurant Logo" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="menu text-center">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index","Home")">Home</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Categories","Home")">Categories</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("foods","Home")">Foods</a>
+                            </li>
+                            
+                            <li style="border:none;">
+                                <a href="@Url.Action("contact","Home")">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="login">
+                        <a href="@Url.Action("Login","Home")">
+                            <img src="~/Content/images/user.png" alt="login" class="img-responsive" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <!-- Navbar Section Ends Here -->
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+
+   
+</body>
+</html>

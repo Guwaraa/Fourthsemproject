@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "additem";
+    Layout = "~/Views/Shared/Adminlayout.cshtml";
+}
+<style>
+    .text-box {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>
+<div style="display:flex; width:80%; margin:0 auto;">
+    <div style=" padding:10px; width:20%;">
+        
+    </div>
+    <div style="padding:10px; width:60%; box-shadow:5px 3px gainsboro;">
+        @{ using (Html.BeginForm("adddataitem", "AdminFoodmenu", FormMethod.Post)) {
+            <div>
+                <label>Foodname:</label>
+                <input type="text" name="foodname" placeholder="Eg:(Chicken momo..)" class="text-box" />
+            </div>
+            <div>
+                <label>FoodDetail:</label>
+                <input type="text" name="fooddetail" placeholder="Eg:(Enter the food detail...)" class="text-box" />
+            </div>
+            <div>
+                <label>FoodImage:</label>
+                <br /><br />
+                <input type="file" name="file" /><br /><br />
+            </div>
+            <div>
+                <label>Foodprice:</label>
+                <input type="number" name="foodprice" placeholder="Rs..." class="text-box" />
+            </div>
+            <div>
+                <label>Foodcategory:</label>
+                <input type="text" name="foodcategory" placeholder="Momo..." class="text-box" />
+            </div>
+            <div style=" margin-top:5%; margin-left:35%; width:30%; height:50px;">
+                <button type="submit" style="width:100%; height:50px; border:none; background-color:slategray; color:white; font-size:25px;" class="fas fa-save">  Save</button>
+            </div>
+            }
+        }
+    </div>
+</div>
+
+

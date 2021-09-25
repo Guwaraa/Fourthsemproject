@@ -1,0 +1,98 @@
+﻿@model IEnumerable<FoodOrderingSystem.Models.Foodmenu>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<!-- fOOD sEARCH Section Starts Here -->
+<section class="food-search text-center">
+    <div class="container">
+        <form action="@Url.Action("search","Home")" method="POST">
+            <input type="search" name="search" placeholder="Search for Food.." required>
+            <input type="submit" name="submit" value="Search" class="btn btn-primary">
+        </form>
+    </div>
+</section>
+<!-- fOOD sEARCH Section Ends Here -->
+<!-- CAtegories Section Starts Here -->
+<section class="categories">
+    <div class="container">
+        <h2 class="text-center">Explore Foods</h2>
+        @{ int count = 0;}
+        @foreach (var item in Model)
+        {
+
+            <a href="category-foods.html">
+                <div class="box-3 float-container">
+                    <img src="~/Content/images/@Html.DisplayFor(modelItem=>item.Foodpicture)"  style="height:400px; "alt="Pizza" class="img-responsive img-curve">
+                    <h3 class="float-text text-white">@Html.DisplayFor(modelItem => item.Foodname)</h3>
+                </div>
+            </a>
+            count++;
+            if (count == 3)
+            {
+                break;
+            }
+
+        }
+        <div class="clearfix"></div>
+    </div>
+</section>
+<!-- Categories Section Ends Here -->
+<!-- fOOD MEnu Section Starts Here -->
+<section class="food-menu">
+    <div class="container">
+        <h2 class="text-center">Food Menu</h2>
+        @{ count = 0;}
+        @foreach (var item in Model)
+        {
+
+            using (Html.BeginForm("addtocart", "Foodmenu", FormMethod.Post))
+            {
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <input type="text" name="foodsn" value="@Html.DisplayFor(modelItem=>item.SN)" style="display:none" />
+                        <img src="~/Content/images/@Html.DisplayFor(modelItem=>item.Foodpicture)" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                    </div>
+                    <div class="food-menu-desc">
+                        <h4>@Html.DisplayFor(modelItem => item.Foodname)</h4>
+                        <p class="food-price">Rs.@Html.DisplayFor(modelItem => item.FoodPrice)</p>
+                        <p class="food-detail">
+                            @Html.DisplayFor(modelItem => item.FoodDetail)
+                        </p>
+                        <br>
+                        <a href="@Url.Action("Login","Home")" class="btn btn-primary">Order Now</a>
+                    </div>
+                </div>
+            }
+            count++;
+            if (count == 6)
+            {
+                break;
+            }
+        }
+
+        <div class="clearfix"></div>
+
+    </div>
+    <p class="text-center">
+        <a href="@Url.Action("foods","Home")">See All Foods</a>
+    </p>
+</section>
+<!-- fOOD Menu Section Ends Here -->
+<!-- social Section Starts Here -->
+<section class="social">
+    <div class="container text-center">
+        <ul>
+            <li>
+                <a href="#"><img src="~/Content/images/facebook.png" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="~/Content/images/instagram.png" /></a>
+            </li>
+            <li>
+                <a href="#"><img src="~/Content/images/twitter.png" /></a>
+            </li>
+        </ul>
+    </div>
+</section>
+<!-- social Section Ends Here -->

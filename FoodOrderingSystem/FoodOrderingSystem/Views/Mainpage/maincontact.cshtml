@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "maincontact";
+    Layout = "~/Views/Shared/MainpageLayout.cshtml";
+}
+
+<style>
+    .text-box {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+</style>
+<div style="width:80%; margin:20px auto; box-shadow:2px 5px gainsboro;padding:10px;">
+    <h1>Write your suggestion here:</h1>
+    <br /><br />
+    <label>Topic:</label>
+    <input name="name" type="text" class="text-box" />
+    <label>Suggest here:</label>
+    <input name="suggest" type="text" class="text-box" />
+    <button style="margin-left:40%; margin-top:5%;" class="button">Submit</button>
+</div>
+

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineFoodOrder.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Online Food Odering System.dbo.Addtocart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Addtocart">
+    <Key>
+      <PropertyRef Name="SN" />
+    </Key>
+    <Property Name="SN" Type="int" Nullable="false" />
+    <Property Name="Foodname" Type="varchar" MaxLength="50" />
+    <Property Name="FoodPrice" Type="int" />
+    <Property Name="FoodCategory" Type="varchar" MaxLength="50" />
+    <Property Name="Foodpicture" Type="text" />
+  </EntityType>
+  <EntityType Name="BookedFood">
+    <Key>
+      <PropertyRef Name="SN" />
+    </Key>
+    <Property Name="SN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Fullname" Type="varchar" MaxLength="50" />
+    <Property Name="Contact" Type="bigint" />
+    <Property Name="Email" Type="text" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Foodlist" Type="text" />
+    <Property Name="Foodprice" Type="int" />
+  </EntityType>
+  <EntityType Name="Foodmenu">
+    <Key>
+      <PropertyRef Name="SN" />
+    </Key>
+    <Property Name="SN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Foodname" Type="varchar" MaxLength="50" />
+    <Property Name="FoodDetail" Type="text" />
+    <Property Name="FoodPrice" Type="int" />
+    <Property Name="FoodCategory" Type="varchar" MaxLength="50" />
+    <Property Name="Foodpicture" Type="text" />
+  </EntityType>
+  <EntityType Name="Userlogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="text" />
+    <Property Name="Password" Type="text" />
+    <Property Name="Phoneno" Type="bigint" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="OnlineFoodOrderStoreContainer">
+    <EntitySet Name="BookedFood" EntityType="Self.BookedFood" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Foodmenu" EntityType="Self.Foodmenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Userlogin" EntityType="Self.Userlogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Addtocart" EntityType="Self.Addtocart" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Addtocart].[SN] AS [SN], 
+    [Addtocart].[Foodname] AS [Foodname], 
+    [Addtocart].[FoodPrice] AS [FoodPrice], 
+    [Addtocart].[FoodCategory] AS [FoodCategory], 
+    [Addtocart].[Foodpicture] AS [Foodpicture]
+    FROM [dbo].[Addtocart] AS [Addtocart]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

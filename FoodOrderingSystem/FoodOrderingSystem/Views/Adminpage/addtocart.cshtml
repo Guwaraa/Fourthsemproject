@@ -1,0 +1,188 @@
+﻿@model IEnumerable<FoodOrderingSystem.Models.Addtocart>
+
+@{
+    ViewBag.Title = "addtocart";
+    Layout = "~/Views/Shared/Adminlayout.cshtml";
+}
+
+<style>
+    .container-box {
+        width: 90%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .header-section {
+        background-color: #ff6b81;
+    }
+
+    .cart-imagehold {
+        border-radius: 10px;
+        width: 25%;
+        float: right;
+        margin-right: 10px;
+        background-color: gainsboro;
+        display: flex;
+    }
+
+    .cart-image {
+        display: inline-block;
+        width: 20%;
+        height: 50px;
+    }
+
+    .image-responsive {
+        width: 100%;
+        height: 100%;
+    }
+
+    .cart-label {
+        padding-top: 10px;
+    }
+
+        .cart-label label {
+            padding: 40px 10px 0px 30px;
+            font-size: 25px;
+            font-family: Consolas;
+            font-weight: bolder;
+        }
+
+    .food-container {
+    }
+
+    .display-menufood {
+        box-shadow: 2px 3px gainsboro;
+        float: left;
+        padding: 10px;
+        width: 70%;
+    }
+
+    .remove-food {
+        box-shadow: 5px 3px gainsboro;
+        float: right;
+        padding: 10px;
+        width: 26%;
+        height: 164px;
+    }
+
+    .remove-image {
+        margin-top: 60px;
+        margin-left: 100px;
+        width: 19%;
+        height: 50px;
+    }
+
+    .remove-button {
+        display: block;
+        width: 100%;
+        height: 50px;
+        background-color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .bill {
+        display: flex;
+    }
+
+    .bill-amount {
+        width: 30%;
+        padding: 10px;
+    }
+
+    .bill-detail {
+        width: 40%;
+        padding: 10px;
+    }
+
+    .bill-paybutton {
+        width: 10%;
+        padding: 10px;
+        margin-left: 20%;
+        background-color: #ff6b81;
+    }
+
+    .paybutton {
+        border: none;
+        display: block;
+        background-color: #ff6b81;
+        color: white;
+        margin-top: 10px;
+        width: 100%;
+        text-decoration: none;
+        font-size: 30px;
+        text-align: center;
+    }
+
+        .paybutton:hover {
+            color: white;
+            cursor: pointer;
+        }
+</style>
+<!-- header section-->
+<div class="header-section">
+    <div class="container-box">
+        <div class="cart-imagehold">
+            <div class="cart-image">
+                <img src="~/Content/images/shopping.png" class="image-responsive" />
+            </div>
+            <div class="cart-label">
+                <label>Item In Cart</label>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- Display Food-->
+<div class="food-display">
+    <div class="container-box">
+        <div class="food-container">
+            @foreach (var item in Model)
+            {
+                <div class="display-menufood">
+                    <div class="food-menu-box">
+                        <div class="food-menu-img" style="width:25%">
+                            <img src="~/Content/images/@Html.DisplayFor(modelItem=>item.Foodpicture)" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
+                        </div>
+                        <div class="food-menu-desc" style="width:65%;">
+                            <h3 style="color:dodgerblue;">@Html.DisplayFor(modelItem => item.Foodname)</h3>
+                            <p class="food-price" style="font-size:23px; margin-top:40px;color:#ff6b81">Rs.@Html.DisplayFor(modelItem => item.FoodPrice)</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="remove-food">
+                    <div class="remove-image">
+                        @using (Html.BeginForm("removecart", "Adminpage", FormMethod.Post))
+                        {
+                            <input type="text" name="foodsn" value="@Html.DisplayFor(modelItem => item.SN)" style="display:none" />
+                            <button type="submit" class="remove-button"><img src="~/Content/images/remove.png" style="width:100%;" /></button>
+                        }
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <br />
+            }
+        </div>
+    </div>
+</div>
+<!-- Pay for bill-->
+<div class="bill-pay">
+    <div class="container-box">
+        <div class="bill">
+            <div class="bill-amount">
+                <span>Total:</span>
+                <span>
+                    @Session["foodprice"]
+                </span>
+            </div>
+            <div class="bill-detail">
+                <label style="float:right;margin-top:15px;font-size:25px">Oder Now:</label>
+            </div>
+            <div class="bill-paybutton">
+                <a class="paybutton" style="float:right;" href="@Url.Action("oder","AdminFoodmenu")">Order</a>
+            </div>
+        </div>
+    </div>
+</div>
+

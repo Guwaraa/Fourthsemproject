@@ -1,0 +1,98 @@
+﻿@model IEnumerable<FoodOrderingSystem.Models.Foodmenu>
+
+@{
+    ViewBag.Title = "Foods";
+    Layout = "~/Views/Shared/Adminlayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Important to make website responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <!-- Link our CSS file -->
+    <link rel="stylesheet" href="~/Content/css/stylecss.css">
+</head>
+<body>
+    <!-- fOOD sEARCH Section Starts Here -->
+    <section class="food-search text-center">
+        <div class="container">
+
+            <form action="food-search.html" method="POST">
+                <input type="search" name="search" placeholder="Search for Food.." required>
+                <input type="submit" name="submit" value="Search" class="btn btn-primary">
+            </form>
+        </div>
+    </section>
+    <!-- fOOD sEARCH Section Ends Here -->
+    <!-- fOOD MEnu Section Starts Here -->
+    <section class="food-menu">
+        <div class="container">
+            <h2 class="text-center">Food Menu</h2>
+            @foreach (var item in Model)
+            {
+                <div class="food-menu-box">
+                    <div class="food-menu-img">
+                        <img src="~/Content/images/@Html.DisplayFor(modelItem=>item.Foodpicture)" alt="Chicke Hawain Pizza" class="img-responsive img-curve" style="height:150px;">
+                    </div>
+                    <div style="float:right; width:5%; height:30px;">
+                        @using (Html.BeginForm("removefood", "AdminFoodmenu", FormMethod.Post))
+                        {
+                            <input type="text" name="foodsn" value="@Html.DisplayFor(modelItem => item.SN)" style="display:none" />
+
+                            <button type="submit" class="fas fa-times-circle" style="width:100%; height:30px; font-size:20px; background-color:white;border:none; cursor:pointer;"></button>
+                        }
+                    </div>
+                    <div class="food-menu-desc" style="float:left;">
+                        <h4>@Html.DisplayFor(modelItem => item.Foodname)</h4>
+                        <p class="food-price">Rs.@Html.DisplayFor(modelItem => item.FoodPrice)</p>
+                        <p class="food-detail">
+                            @Html.DisplayFor(modelItem => item.FoodDetail)
+                        </p>
+                        <div class="clearfix"></div>
+
+                        <br>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"></div>
+
+        </div>
+        <p class="text-center">
+            <a href="@Url.Action("additem","AdminFoodmenu")">Add new Item</a>
+        </p>
+    </section>
+    
+    
+    <!-- fOOD Menu Section Ends Here -->
+    <!-- social Section Starts Here -->
+    <section class="social">
+        <div class="container text-center">
+            <ul>
+                <li>
+                    <a href="#"><img src="https://img.icons8.com/fluent/50/000000/facebook-new.png" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png" /></a>
+                </li>
+                <li>
+                    <a href="#"><img src="https://img.icons8.com/fluent/48/000000/twitter.png" /></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- social Section Ends Here -->
+    <!-- footer Section Starts Here -->
+    <section class="footer">
+        <div class="container text-center">
+        </div>
+    </section>
+    <!-- footer Section Ends Here -->
+</body>
+</html>
+
+
+
